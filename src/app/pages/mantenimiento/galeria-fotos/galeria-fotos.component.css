@@ -1,0 +1,23 @@
+.content{
+  margin: 1rem;
+
+}
+mat-form-field{
+  margin-right: 1rem;
+}
+
+button{
+  margin-bottom: 1rem;
+  margin-right: 0.5rem;
+}
+
+.cabecera{
+  margin-bottom: 0.5rem;
+}
+.comentarios{
+  font-size: small;
+}
+
+.cuerpos{
+  margin-top: 1rem;
+}

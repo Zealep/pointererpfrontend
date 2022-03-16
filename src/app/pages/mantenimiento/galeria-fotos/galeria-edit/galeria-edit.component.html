@@ -1,0 +1,90 @@
+<mat-card>
+  <mat-card-title>
+    Editar la galeria de fotos
+  </mat-card-title>
+  <mat-card-content>
+
+    <form>
+
+      <div class="content">
+
+      <mat-form-field appearance="fill">
+        <mat-label>Titulo</mat-label>
+        <input matInput [(ngModel)]="titulo" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha</mat-label>
+        <input [(ngModel)]="fecha" matInput [matDatepicker]="picker" [ngModelOptions]="{standalone: true}">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <div>
+
+      <span><small><i>Esta permitido subir imagenes de tipo .jpg .jpeg y .png  </i></small></span>
+      <br>
+      <button class="btn-upload" mat-stroked-button (click)="fileInput.click()" color="accent">
+        <input #fileInput type="file" (change)="selectFile($event)" accept="image/png, image/jpg, image/jpeg"
+          style="display:none;" />
+        <mat-icon>file_upload</mat-icon>
+        Subir imagen principal
+      </button>
+
+
+
+      <div>
+        <mat-list *ngIf="this.globalDatoArchivo">
+          <mat-list-item>
+            {{this.globalDatoArchivo.nombreArchivo}}
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </div>
+
+
+      <div>
+
+      <span><small><i>Puede subir imagenes adicionales a la imagen principal </i></small></span>
+      <br>
+      <button class="btn-upload" mat-stroked-button (click)="fileInput2.click()" color="accent">
+        <input #fileInput2 type="file" multiple (change)="selectFiles($event)" accept="image/png, image/jpg, image/jpeg"
+          style="display:none;" />
+        <mat-icon>file_upload</mat-icon>
+        Anexar imagenes
+      </button>
+    </div>
+      <div >
+        <mat-list *ngIf="this.globalDatoArchivosAnexos">
+          <mat-list-item *ngFor="let f of globalDatoArchivosAnexos;let i=index">
+            <button mat-list-icon mat-icon-button color="warn" (click)="delete(f.pathArchivo!,f.idDatoArchivo!)">
+              <mat-icon >delete</mat-icon>
+            </button>
+
+            <!--<mat-icon mat-list-icon>delete</mat-icon>  -->
+            <div matLine>{{this.f.nombreArchivo}}</div>
+
+
+          </mat-list-item>
+        </mat-list>
+      </div>
+
+      <br>
+      <button mat-stroked-button (click)="editar()" color="primary">
+        <mat-icon>save</mat-icon>
+        Editar
+      </button>
+
+      <button class="btn-form" (click)="cancelar()" mat-stroked-button color="primary">
+        <mat-icon>cancel</mat-icon>
+       <span>Cancelar</span>
+    </button>
+
+    </div>
+
+    </form>
+
+  </mat-card-content>
+
+  </mat-card>
+

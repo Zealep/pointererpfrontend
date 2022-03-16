@@ -1,0 +1,68 @@
+<mat-card>
+  <mat-card-title>
+    Editar de noticia
+  </mat-card-title>
+  <mat-card-content>
+
+    <form>
+
+      <div class="content">
+
+      <mat-form-field appearance="fill">
+        <mat-label>Titulo</mat-label>
+        <input matInput [(ngModel)]="titulo" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha</mat-label>
+        <input [(ngModel)]="fecha" matInput [matDatepicker]="picker" [ngModelOptions]="{standalone: true}">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <div class="cuerpos">
+        <angular-editor [(ngModel)]="htmlContent" [ngModelOptions]="{standalone: true}"
+        [config]="config"
+        ></angular-editor>
+
+      </div>
+
+      <div class="cuerpos">
+      <span><small><i>Esta permitido subir imagenes de tipo .jpg .jpeg y .png </i></small></span>
+        <br>
+      <button class="btn-upload" mat-stroked-button (click)="fileInput.click()" color="accent">
+        <input #fileInput type="file" (change)="selectFile($event)" accept="image/png, image/jpg, image/jpeg"
+          style="display:none;" />
+        <mat-icon>file_upload</mat-icon>
+        Subir imagen portada
+      </button>
+
+    </div>
+
+    <div>
+      <mat-list *ngIf="this.archivo">
+        <mat-list-item>
+          {{this.archivo?.nombreArchivo}}
+        </mat-list-item>
+      </mat-list>
+    </div>
+
+      <br>
+      <button mat-stroked-button color="primary" (click)="editar()">
+        <mat-icon>save</mat-icon>
+        Editar
+      </button>
+
+      <button class="btn-form" (click)="cancelar()" mat-stroked-button color="primary">
+        <mat-icon>cancel</mat-icon>
+       <span>Cancelar</span>
+    </button>
+
+
+
+    </div>
+
+    </form>
+  </mat-card-content>
+
+  </mat-card>

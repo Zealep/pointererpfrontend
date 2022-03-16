@@ -1,0 +1,39 @@
+<!--
+<div class="sidebar-container">
+  <mat-toolbar color="primary" class="sidebar-toolbar">
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1 class="sidebar-app-name">Sidenav App</h1>
+    <app-header></app-header>
+  </mat-toolbar>
+  <mat-sidenav-container class="sidebar-sidenav-container">
+    <mat-sidenav #snav mode="side" fixedTopGap="56" opened="true">
+      <app-side-navbar></app-side-navbar>
+    </mat-sidenav>
+    <mat-sidenav-content class="router-container">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+-->
+<app-header></app-header>
+<mat-sidenav-container class="example-container" >
+  <mat-sidenav mode="side" opened>
+
+    <ng-material-multilevel-menu [configuration]='config' [items]='appitems' (selectedItem)="selectedItem($event)">
+    </ng-material-multilevel-menu>
+
+  </mat-sidenav>
+  <mat-sidenav-content><div>
+    <div class="contenedor">
+      <router-outlet></router-outlet>
+    </div>
+    </div></mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+
+
+

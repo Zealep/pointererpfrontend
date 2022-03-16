@@ -1,0 +1,31 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+
+
+    <div>
+    <a [routerLink]="'/pages/datos-personales'">
+      <img src="./assets/images/pointererp.png" width="150" height="80"/>
+    </a>
+  </div>
+     <!--
+    <span class="menu-spacer"></span>
+
+      <div class="buttons">
+        <button mat-button *ngFor="let m of menus" [routerLink]="'/pages'+m.urlOperacion">
+          {{m.opmDes}}
+        </button>
+      </div>
+      -->
+
+    <span class="logo-spacer"></span>
+    <div>
+      <button mat-button (click)="cerrarSesion()">
+        <mat-icon>logout</mat-icon> Cerrar sesión
+      </button>
+    </div>
+    <div>
+      <img src="./assets/images/logocliente.png" width="150" height="80"/>
+    </div>
+
+    </mat-toolbar-row>
+  </mat-toolbar>
