@@ -6,6 +6,11 @@ mat-form-field{
   margin-right: 1rem;
 }
 
+.content mat-form-field{
+  margin-right: 1rem;
+  width: 50%;
+}
+
 button{
   margin-bottom: 1rem;
   margin-right: 0.5rem;

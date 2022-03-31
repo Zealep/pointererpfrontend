@@ -19,10 +19,10 @@ export class PagesComponent implements OnInit {
   config = {
     paddingAtStart: true,
     classname: 'my-custom-class',
-    listBackgroundColor: '#1976D2',
+    listBackgroundColor: '#303f9f',
     fontColor: 'white',
-    backgroundColor: '#1976D2',
-    selectedListFontColor: '#FFAB40',
+    backgroundColor: '#303f9f',
+    selectedListFontColor: '#ff4081'
   };
 
   constructor(private menuService:MenuService,

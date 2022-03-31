@@ -25,10 +25,11 @@
  -->
 
     <span class="logo-spacer"></span>
-    <div>
+    <div class="user-icon">
       <button mat-button (click)="cerrarSesion()">
         <mat-icon>logout</mat-icon>
       </button>
+      <span class="caption">{{username}}</span>
     </div>
     <div>
       <img src="./assets/images/logocliente.png" width="150" height="80"/>

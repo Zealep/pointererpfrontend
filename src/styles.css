@@ -24,7 +24,6 @@ mat-card {
 
   th.mat-header-cell {
     font-weight: bold;
-    text-transform: uppercase;
     background-color:#0276aa;
     color: white;
   }

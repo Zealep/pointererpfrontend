@@ -1,6 +1,6 @@
 <mat-card>
 <mat-card-title>
-  Mantenimiento de galeria de fotos
+  Nueva galeria de fotos
 </mat-card-title>
 <mat-card-content>
 
@@ -10,7 +10,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Titulo</mat-label>
-      <input matInput [(ngModel)]="titulo" [ngModelOptions]="{standalone: true}">
+      <input matInput [(ngModel)]="titulo" [ngModelOptions]="{standalone: true}" maxlength="200">
     </mat-form-field>
 
     <mat-form-field appearance="fill">

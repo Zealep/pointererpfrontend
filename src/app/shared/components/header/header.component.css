@@ -16,6 +16,14 @@ a{
    color: red;
  }
 
- button {
-  text-transform: lowercase;
- }
+.user-icon{
+  vertical-align: top;
+  display: inline-block;
+  text-align: center;
+  width: 50px;
+}
+.caption {
+  display: block;
+  font-size: small;
+  margin-left: 5px;
+}

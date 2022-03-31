@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
 
   menus:Menu[] = [];
   idUsuario?:string;
+  username?:string;
   principales:ModuloUsuario[] = [];
    @Output() header = new EventEmitter<{id:string,nombre:string}>();
 
@@ -28,6 +29,7 @@ export class HeaderComponent implements OnInit {
 
 ngOnInit() {
  this.idUsuario = sessionStorage.getItem("usuario")!;
+ this.username = sessionStorage.getItem("username")!;
   this.getModuloPorUsuario();
 }
 

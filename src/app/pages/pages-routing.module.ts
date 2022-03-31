@@ -20,7 +20,7 @@ const routes: Routes = [
       {
         path: '', //
         pathMatch: 'full',
-        component: NoticiaComponent
+        component: InicioComponent
       },
       {
         path: 'galeria', //
