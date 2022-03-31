@@ -9,3 +9,13 @@ a{
 .logo-spacer{
   flex: 1 1 auto;
 }
+
+.activebutton
+{
+   background-color: rgb(51, 51, 51);
+   color: red;
+ }
+
+ button {
+  text-transform: lowercase;
+ }

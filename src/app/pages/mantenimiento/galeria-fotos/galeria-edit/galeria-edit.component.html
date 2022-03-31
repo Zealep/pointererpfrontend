@@ -24,7 +24,7 @@
 
       <span><small><i>Esta permitido subir imagenes de tipo .jpg .jpeg y .png  </i></small></span>
       <br>
-      <button class="btn-upload" mat-stroked-button (click)="fileInput.click()" color="accent">
+      <button class="btn-upload" mat-raised-button (click)="fileInput.click()" color="accent">
         <input #fileInput type="file" (change)="selectFile($event)" accept="image/png, image/jpg, image/jpeg"
           style="display:none;" />
         <mat-icon>file_upload</mat-icon>
@@ -47,7 +47,7 @@
 
       <span><small><i>Puede subir imagenes adicionales a la imagen principal </i></small></span>
       <br>
-      <button class="btn-upload" mat-stroked-button (click)="fileInput2.click()" color="accent">
+      <button class="btn-upload" mat-raised-button (click)="fileInput2.click()" color="accent">
         <input #fileInput2 type="file" multiple (change)="selectFiles($event)" accept="image/png, image/jpg, image/jpeg"
           style="display:none;" />
         <mat-icon>file_upload</mat-icon>
@@ -70,12 +70,12 @@
       </div>
 
       <br>
-      <button mat-stroked-button (click)="editar()" color="primary">
+      <button mat-raised-button (click)="editar()" color="primary">
         <mat-icon>save</mat-icon>
         Editar
       </button>
 
-      <button class="btn-form" (click)="cancelar()" mat-stroked-button color="primary">
+      <button class="btn-form" (click)="cancelar()" mat-raised-button color="primary">
         <mat-icon>cancel</mat-icon>
        <span>Cancelar</span>
     </button>

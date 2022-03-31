@@ -12,27 +12,27 @@ import { Router } from '@angular/router';
 
 export class PagesComponent implements OnInit {
 
-  appitems:any;
+  appitems: any;
+  idModulo?: string
+  nombreModulo?:string
 
   config = {
     paddingAtStart: true,
     classname: 'my-custom-class',
-    listBackgroundColor: '#3F51B5',
+    listBackgroundColor: '#1976D2',
     fontColor: 'white',
-    backgroundColor: '#3F51B5',
-    selectedListFontColor: '#E040FB',
+    backgroundColor: '#1976D2',
+    selectedListFontColor: '#FFAB40',
   };
 
   constructor(private menuService:MenuService,
     private router:Router) { }
 
   ngOnInit(): void {
-    this.getMenus();
   }
 
   getMenus(){
-    this.menuService.getList().subscribe(x=>{
-      console.log('items',x);
+    this.menuService.getListByModulo(this.idModulo!).subscribe(x=>{
       this.appitems = x;
     })
   }
@@ -40,6 +40,13 @@ export class PagesComponent implements OnInit {
   selectedItem(event:any){
     console.log('event',event)
     this.router.navigate(['/pages'+event.link]);
+  }
+
+  onHeader(data:any){
+      this.idModulo =data.id;
+      this.nombreModulo = data.nombre;
+      this.getMenus();
+      console.log('items',this.appitems)
   }
 
 }

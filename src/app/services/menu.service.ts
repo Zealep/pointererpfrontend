@@ -9,6 +9,8 @@ import { ResponseApi } from '../models/response-api';
 import { GaleriaFoto } from '../models/galeria';
 import { Noticia } from '../models/noticia';
 import { Imenu } from '../models/dto/IMenu';
+import { Menu } from '../models/menu';
+import { ModuloUsuario } from '../models/dto/usuario-modulo';
 
 @Injectable({
   providedIn: 'root'
@@ -20,9 +22,23 @@ export class MenuService {
   constructor(private http: HttpClient, private router: Router) {
   }
 
-  getList(){
-      return this.http.get<Imenu[]>(`${this.baseUrl}/list`);
+  getListByModulo(id:string){
+      return this.http.get<Imenu[]>(`${this.baseUrl}/list/${id}`);
 
+  }
+
+  getMenus() {
+    return this.http.get<Menu[]>(`${this.baseUrl}/principales`)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getModuloPorUsuario(id:string) {
+    return this.http.get<ModuloUsuario[]>(`${this.baseUrl}/usuario/${id}`)
+    .pipe(
+      catchError(this.handleError)
+    );
   }
 
 
