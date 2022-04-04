@@ -130,6 +130,7 @@ export class GaleriaEditComponent implements OnInit {
 
 
   editar() {
+    this.spinnerOverlayService.show();
       let galeria = new GaleriaFoto();
       galeria.idGaleriaFoto = this.idGaleria;
       galeria.fecha = this.fecha;
@@ -137,6 +138,7 @@ export class GaleriaEditComponent implements OnInit {
       this.galeriaService.save(galeria)
       .subscribe(x=>{
         console.log('galeria actualizada')
+        this.spinnerOverlayService.hide();
         this.cancelar();
       })
   }

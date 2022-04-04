@@ -6,6 +6,7 @@ import { DatoArchivo } from '../../../models/dato-archivo';
 import { PROCESO_GALERIA, PROCESO_NOTICIA, ID_DOCUMENTO } from '../../../shared/var.constant';
 import { Router } from '@angular/router';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
+import { SpinnerOverlayService } from '../../../services/overlay.service';
 
 @Component({
   selector: 'app-noticia',
@@ -55,7 +56,8 @@ export class NoticiaComponent implements OnInit {
 
   constructor(private noticiaService: NoticiaService,
     private uploadService: UploadFileService,
-    private router:Router) { }
+    private router:Router,
+    private readonly spinnerOverlayService: SpinnerOverlayService) { }
 
   ngOnInit(): void {
   }
@@ -65,7 +67,7 @@ export class NoticiaComponent implements OnInit {
     this.img = file;
   }
   grabar() {
-
+    this.spinnerOverlayService.show();
     let noticia = new Noticia();
     noticia.titulo = this.titulo;
     noticia.fecha = this.fecha;
@@ -89,6 +91,7 @@ export class NoticiaComponent implements OnInit {
       fileFormData.append('codigo', x.idEntity!);
       this.uploadService.upload(fileFormData).subscribe(y => {
         console.log('se guardo noticia con imagen')
+        this.spinnerOverlayService.hide();
         this.router.navigate(['/pages/noticia']);
       })
     })
