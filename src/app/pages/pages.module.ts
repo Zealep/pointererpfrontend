@@ -16,6 +16,10 @@ import { GaleriaListComponent } from './mantenimiento/galeria-fotos/galeria-list
 import { GaleriaEditComponent } from './mantenimiento/galeria-fotos/galeria-edit/galeria-edit.component';
 import { NoticiaEditComponent } from './mantenimiento/noticia/noticia-edit/noticia-edit.component';
 import { NgMaterialMultilevelMenuModule, ɵb } from 'ng-material-multilevel-menu';
+import { RequisicionPersonalComponent } from './mantenimiento/requisicion-personal/requisicion-personal.component';
+import { RequisicionPersonalListComponent } from './mantenimiento/requisicion-personal/requisicion-personal-list/requisicion-personal-list.component';
+import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 
 @NgModule({
@@ -27,7 +31,9 @@ import { NgMaterialMultilevelMenuModule, ɵb } from 'ng-material-multilevel-menu
       NoticiaListComponent,
       GaleriaListComponent,
       GaleriaEditComponent,
-      NoticiaEditComponent
+      NoticiaEditComponent,
+      RequisicionPersonalComponent,
+      RequisicionPersonalListComponent
   ],
   imports: [
     SharedModule,
@@ -39,7 +45,9 @@ import { NgMaterialMultilevelMenuModule, ɵb } from 'ng-material-multilevel-menu
     ReactiveFormsModule,
     FlexLayoutModule,
     PdfViewerModule,
-    AngularEditorModule
+    AngularEditorModule,
+    NgxMatDatetimePickerModule,
+    NgxMatTimepickerModule,
   ],
 
 })

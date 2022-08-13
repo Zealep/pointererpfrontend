@@ -25,3 +25,18 @@ $custom-typography: mat-typography-config(
 
 // Override the typography in the core CSS.
 @include mat-core($custom-typography);
+
+.error-style{
+  background-color:#b71c1c;
+  color:white;
+}
+
+.ok-style{
+  background-color:#1b5e20;
+  color:white;
+}
+
+.warn-style{
+  background-color:#dbdb2a;
+  color:white;
+}

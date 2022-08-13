@@ -1,0 +1,498 @@
+<div class="container">
+  <mat-toolbar color="primary"><span>Mantenimiento Requisicion</span></mat-toolbar>
+  <form [formGroup]="form">
+
+    <div class="row" style="margin-top: 10px;">
+
+      <div class="col-12 col-md-4">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Grupo de selección</mat-label>
+          <mat-select formControlName="idDatoGrupoSeleccion" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let c of gruposSeleccion" [value]="c.idDato">
+              {{c.glsDato}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+
+        <div class="col-12 col-md-4">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Forma de cobertura</mat-label>
+            <mat-select formControlName="idDatoFormaCobertura" required>
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let c of formasCobertura" [value]="c.idDato">
+                {{c.glsDato}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+
+        <div class="col-12 col-md-4">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Fecha de solicitud</mat-label>
+            <input matInput [matDatepicker]="picker1" formControlName="fechaSolicitud">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+
+        </div>
+
+
+
+    </div>
+
+
+    <div class="row">
+      <div class="col-12 col-md-4">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Fecha de posible ingreso</mat-label>
+          <input matInput [matDatepicker]="picker2" formControlName="fechaPosibleIngreso">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+
+      </div>
+
+      <div class="col-12 col-md-4">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Cargo</mat-label>
+          <mat-select formControlName="idCargo" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let c of cargos" [value]="c.idCargo">
+              {{c.glsCargo}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+
+      <div class="col-12 col-md-4">
+
+        <mat-form-field appearance="outline">
+          <mat-label># Vacantes</mat-label>
+          <input type="number" matInput formControlName="numeroVacantes">
+        </mat-form-field>
+
+      </div>
+
+    </div>
+
+
+    <div class="row">
+      <div class="col-12 col-md-4">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Sueldo propuesto</mat-label>
+          <input type="number" matInput formControlName="sueldoPropuesto">
+        </mat-form-field>
+
+      </div>
+
+      <div class="col-12 col-md-4">
+        <label id="example-radio-group-label">Vizualizar sueldo</label><br>
+      <mat-radio-group aria-labelledby="example-radio-group-label" formControlName="indVisualizarSueldo">
+          <mat-radio-button value="S">Si</mat-radio-button>
+          <mat-radio-button value="N">No</mat-radio-button>
+        </mat-radio-group>
+
+      </div>
+
+      <div class="col-12 col-md-4">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Pais de trabajo</mat-label>
+          <mat-select formControlName="idDatoPaisTrabajo" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let c of paisTrabajo" [value]="c.idDato">
+              {{c.glsDato}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+      </div>
+
+
+    <div class="row">
+      <div class="col-12 col-md-4">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Departamento trabajo</mat-label>
+          <mat-select formControlName="idDpto" required (ngModelChange)="onSelectDepartamento($event)">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let c of departamentos" [value]="c.idDistrito" >
+              {{c.glsUbigeo}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+
+      <div class="col-12 col-md-4">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Provincia trabajo</mat-label>
+          <mat-select formControlName="idProv" required (ngModelChange)="onSelectProvincia($event)">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let c of provincias" [value]="c.idDistrito" >
+              {{c.glsUbigeo}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+
+      <div class="col-12 col-md-4">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Distrito trabajo</mat-label>
+          <mat-select formControlName="idDist" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let c of distritos" [value]="c.idDistrito" >
+              {{c.glsUbigeo}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+
+    </div>
+
+
+    <div class="row">
+      <div class="col-12 col-md-4">
+
+
+        <mat-form-field appearance="outline">
+          <mat-label>Centro de costo solicitante</mat-label>
+          <mat-select formControlName="idCentroCostoSolicitante" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let c of centrosCostos" [value]="c.idCentroCosto">
+              {{c.glsCentroCosto}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+
+      <div class="col-12 col-md-4">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Area solicitante</mat-label>
+          <mat-select formControlName="idAreaSolicitante" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let c of areas" [value]="c.idArea">
+              {{c.glsArea}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+
+      <div class="col-12 col-md-4">
+
+        <mat-form-field appearance="outline">
+          <mat-label> Trabajador Solicitante</mat-label>
+          <mat-select formControlName="idTrabajadorSolicitante" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let c of trabajadores" [value]="c.idTrabajador">
+              {{c.apePaterno +" "+c.apeMaterno+" "+c.nombres}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+
+    </div>
+
+
+    <div class="row">
+      <div class="col-12 col-md-4">
+
+
+        <mat-form-field appearance="outline">
+          <mat-label>Motivo solicitud</mat-label>
+          <mat-select formControlName="idDatoMotivoSolicitud" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let c of motivosSolicitud" [value]="c.idDato">
+              {{c.glsDato}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+
+      <div class="col-12 col-md-4">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Categoria</mat-label>
+          <mat-select formControlName="idDatoSunatCategoria" required (ngModelChange)="onSelectCategoria($event)">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let c of sunatCategorias" [value]="c.idDato">
+              {{c.glsDatoSunat}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 col-md-4">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Tipo Contrato</mat-label>
+          <mat-select formControlName="idDatoSunatTipoContrato" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let c of sunatTipoContratos" [value]="c.idDato">
+              {{c.glsDatoSunat}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+
+    </div>
+
+
+
+
+    <div class="row">
+      <div class="col-12 col-md-4">
+
+        <mat-form-field appearance="outline">
+          <mat-label> Trabajador Aprobador</mat-label>
+          <mat-select formControlName="idTrabajadorAprobador" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let c of trabajadores" [value]="c.idTrabajador">
+              {{c.apePaterno +" "+c.apeMaterno+" "+c.nombres}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+      </div>
+
+      <div class="col-12 col-md-4">
+
+
+        <mat-form-field appearance="outline">
+          <mat-label> Estado Aprobacion</mat-label>
+          <mat-select formControlName="estAprobacion" required>
+            <mat-option>--</mat-option>
+            <mat-option value="A">
+           Aprobado
+            </mat-option>
+            <mat-option value="N">
+              No Aprobado
+               </mat-option>
+               <mat-option value="P">
+                Pendiente
+                 </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 col-md-4">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Fecha aprobacion</mat-label>
+          <input matInput [matDatepicker]="picker3" formControlName="fechaAprobacion">
+          <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+          <mat-datepicker #picker3></mat-datepicker>
+        </mat-form-field>
+
+      </div>
+
+    </div>
+
+
+    <div class="row">
+      <div class="col-12 col-md-4">
+
+
+        <label id="example-radio-group-label3">Indicador publicar requisicon
+        </label><br>
+        <mat-radio-group aria-labelledby="example-radio-group-label3" formControlName="indPublicarRequisicion">
+            <mat-radio-button value="S">Sí</mat-radio-button>
+            <mat-radio-button value="N">No</mat-radio-button>
+
+          </mat-radio-group>
+
+      </div>
+
+      <div class="col-12 col-md-4">
+<!--
+          <mat-form-field appearance="outline">
+          <mat-label>Fecha desde publiciacion</mat-label>
+          <input matInput [matDatepicker]="picker4" formControlName="fechaDesdePublicacion">
+          <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+          <mat-datepicker #picker4></mat-datepicker>
+        </mat-form-field>
+
+-->
+
+        <mat-form-field appearance="outline">
+          <mat-label>Fecha desde publiciacion</mat-label>
+          <input matInput [ngxMatDatetimePicker]="pickertime" formControlName="fechaDesdePublicacion" required>
+          <mat-datepicker-toggle matSuffix [for]="$any(pickertime)">
+          </mat-datepicker-toggle>
+          <ngx-mat-datetime-picker #pickertime [showSpinners]="showSpinners" [color]="color" [showSeconds]="showSeconds" [defaultTime]="defaultTime"
+              [stepHour]="stepHour" [stepMinute]="stepMinute" [touchUi]="touchUi" [enableMeridian]="true"
+              >
+          </ngx-mat-datetime-picker>
+      </mat-form-field>
+
+      </div>
+
+      <div class="col-12 col-md-4">
+        <!--
+        <mat-form-field appearance="outline">
+          <mat-label>Fecha hasta publiciacion</mat-label>
+          <input matInput [matDatepicker]="picker5" formControlName="fechaHastaPublicacion">
+          <mat-datepicker-toggle matSuffix [for]="picker5"></mat-datepicker-toggle>
+          <mat-datepicker #picker5></mat-datepicker>
+        </mat-form-field>
+-->
+
+        <mat-form-field appearance="outline">
+          <mat-label>Fecha hasta publiciacion</mat-label>
+          <input matInput [ngxMatDatetimePicker]="pickertime2" formControlName="fechaHastaPublicacion" required>
+          <mat-datepicker-toggle matSuffix [for]="$any(pickertime2)">
+          </mat-datepicker-toggle>
+          <ngx-mat-datetime-picker #pickertime2 [showSpinners]="showSpinners" [color]="color" [showSeconds]="showSeconds" [defaultTime]="defaultTime"
+              [stepHour]="stepHour" [stepMinute]="stepMinute" [touchUi]="touchUi" [enableMeridian]="true"
+              >
+          </ngx-mat-datetime-picker>
+      </mat-form-field>
+
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-md-6">
+
+
+        <mat-form-field appearance="outline">
+          <mat-label>Observaciones</mat-label>
+          <textarea matInput formControlName="observaciones"></textarea>
+        </mat-form-field>
+
+      </div>
+
+      <div class="col-12 col-md-6">
+
+        <label id="example-radio-group-label4">Estado requisicon
+        </label><br>
+        <mat-radio-group aria-labelledby="example-radio-group-label4" formControlName="estRequisicion" required>
+            <mat-radio-button value="A">Activa</mat-radio-button>
+            <mat-radio-button value="C">Cerrada</mat-radio-button>
+            <mat-radio-button value="D">Desierta</mat-radio-button>
+          </mat-radio-group>
+      </div>
+
+    </div>
+  </form>
+
+    <mat-toolbar color="primary"><span>Tipo de pruebas</span></mat-toolbar>
+
+    <div class="row" style="margin-top: 15px;">
+
+      <div class="col-12 col-md-4">
+
+        <mat-form-field appearance="outline">
+          <mat-label> Tipo de prueba</mat-label>
+          <mat-select  [(ngModel)]="idPrueba">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let c of tiposPruebas" [value]="c">
+              {{c.glsDato}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+    </div>
+
+    <div class="col-12 col-md-4">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Peso</mat-label>
+        <input type="number" matInput [(ngModel)]="pesoPrueba">
+      </mat-form-field>
+
+    </div>
+
+    <div class="col-12 col-md-1">
+
+      <button (click)="agregarPrueba()" mat-raised-button color="accent">
+        <mat-icon>add</mat-icon>
+      </button>
+
+
+    </div>
+
+    </div>
+
+
+  <div style="margin-top:15px">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="prueba">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Prueba </th>
+        <td mat-cell *matCellDef="let row">
+          {{row.idDatoTipoPrueba.glsDato}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="peso">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Peso </th>
+        <td mat-cell *matCellDef="let row"> {{row.pesoPrueba}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let element;let idx=index;">
+          <button mat-icon-button color="warn" (click)="borrarPrueba(idx,element)">
+            <mat-icon>delete</mat-icon>
+          </button>
+
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No hay informacion de la busqueda</td>
+      </tr>
+    </table>
+
+  </div>
+
+
+
+<div class="row" style="margin-bottom: 20px;">
+
+  <div class="col-12 col-md-5">
+    <button class="btn-form" [disabled]="form.invalid" (click)="grabar()" mat-raised-button color="primary">
+      <mat-icon>save</mat-icon>
+      <span>Registrar</span>
+    </button>
+  </div>
+  <div class="col-12 col-md-5">
+    <button class="btn-form" (click)="cancelar()" mat-raised-button>
+      <mat-icon>cancel</mat-icon>
+      <span>Cancelar</span>
+    </button>
+  </div>
+</div>
+
+</div>
+

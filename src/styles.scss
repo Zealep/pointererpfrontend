@@ -1,3 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/maps";
+@import "~bootstrap/scss/utilities";
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/containers";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/helpers";
+@import "~bootstrap/scss/utilities/api";
+
 mat-card{
   margin-top: 2rem;
 }
@@ -24,7 +38,7 @@ mat-card {
 
   th.mat-header-cell {
     font-weight: bold;
-    background-color:#0276aa;
+    background-color:#5499DE;
     color: white;
   }
 

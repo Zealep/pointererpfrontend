@@ -9,6 +9,8 @@ import { NoticiaListComponent } from './mantenimiento/noticia/noticia-list/notic
 import { GaleriaListComponent } from './mantenimiento/galeria-fotos/galeria-list/galeria-list.component';
 import { NoticiaEditComponent } from './mantenimiento/noticia/noticia-edit/noticia-edit.component';
 import { GaleriaEditComponent } from './mantenimiento/galeria-fotos/galeria-edit/galeria-edit.component';
+import { RequisicionPersonalComponent } from './mantenimiento/requisicion-personal/requisicion-personal.component';
+import { RequisicionPersonalListComponent } from './mantenimiento/requisicion-personal/requisicion-personal-list/requisicion-personal-list.component';
 
 
 
@@ -45,7 +47,19 @@ const routes: Routes = [
       {
         path: 'noticia/edit/:id', //
         component: NoticiaEditComponent
-      }
+      },
+      {
+        path: 'requisicion/add', //
+        component: RequisicionPersonalComponent
+      },
+      {
+        path: 'requisicion/edit/:id', //
+        component: RequisicionPersonalComponent
+      },
+      {
+        path: 'bandejaRequisicion', //
+        component: RequisicionPersonalListComponent
+      },
 
     ]
   },
