@@ -52,7 +52,7 @@ export class RequisicionPersonalComponent implements OnInit {
   form: FormGroup = new FormGroup({
     idDatoGrupoSeleccion: new FormControl(''),
     idDatoFormaCobertura: new FormControl(''),
-    fechaSolicitud: new FormControl(''),
+    fechaSolicitud: new FormControl(new Date()),
     fechaPosibleIngreso: new FormControl(''),
     idCargo: new FormControl(''),
     numeroVacantes: new FormControl(''),
@@ -484,7 +484,6 @@ getTiposPrueba(){
 
   validAgregarPrueba(det: PruebaRequisicion): boolean{
     return (det.idDatoTipoPrueba==null || det.pesoPrueba==null)
-
   }
 
   refreshDataSource(){

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Imenu } from '../models/dto/IMenu';
 import { MenuService } from '../services/menu.service';
 import { Router } from '@angular/router';
+import { SelectService } from '../services/select.service';
+import { AlertaOut } from '../models/dto/alerta-out';
 
 @Component({
   selector: 'app-pages',
@@ -16,6 +18,8 @@ export class PagesComponent implements OnInit {
   idModulo?: string
   nombreModulo?:string
 
+  alertas: AlertaOut[] = []
+
   config = {
     paddingAtStart: true,
     classname: 'my-custom-class',
@@ -26,9 +30,18 @@ export class PagesComponent implements OnInit {
   };
 
   constructor(private menuService:MenuService,
-    private router:Router) { }
+    private router:Router,
+    private selectService:SelectService) { }
 
   ngOnInit(): void {
+    this.getAlertas();
+  }
+
+  getAlertas(){
+    this.selectService.listAlertas(sessionStorage.getItem('usuario')!)
+    .subscribe(x=>{
+      this.alertas = x;
+    })
   }
 
   getMenus(){

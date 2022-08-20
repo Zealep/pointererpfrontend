@@ -29,8 +29,34 @@
   </div>
   </mat-sidenav>
   <mat-sidenav-content><div>
-    <div class="contenedor">
-      <router-outlet></router-outlet>
+    <div class="contenedor" style="margin-bottom: 30px;">
+      <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-10">
+          <router-outlet></router-outlet>
+        </div>
+
+        <div class="col-12 col-md-2">
+          <mat-card style="margin-top: 15px;">
+            <mat-card-content>
+              <mat-list>
+                <div mat-subheader>Recordatorios</div>
+                <mat-list-item *ngFor="let a of alertas">
+                  <mat-icon mat-list-icon>notification_important</mat-icon>
+                  <div mat-line>{{a.glsMensaje}}</div>
+
+                </mat-list-item>
+
+
+              </mat-list>
+
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+
+
+    </div>
     </div>
     </div></mat-sidenav-content>
 </mat-sidenav-container>

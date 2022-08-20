@@ -120,7 +120,7 @@
 
     <ng-container matColumnDef="fechaSolicitud">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Solicitud </th>
-      <td mat-cell *matCellDef="let row">  {{row.fechaSolicitud | date:'mediumDate'}}  </td>
+      <td mat-cell *matCellDef="let row">  {{row.fechaSolicitud | date: 'dd/MM/yyyy'}}  </td>
     </ng-container>
 
     <ng-container matColumnDef="cargo">

@@ -11,6 +11,7 @@ import { NoticiaEditComponent } from './mantenimiento/noticia/noticia-edit/notic
 import { GaleriaEditComponent } from './mantenimiento/galeria-fotos/galeria-edit/galeria-edit.component';
 import { RequisicionPersonalComponent } from './mantenimiento/requisicion-personal/requisicion-personal.component';
 import { RequisicionPersonalListComponent } from './mantenimiento/requisicion-personal/requisicion-personal-list/requisicion-personal-list.component';
+import { ConsultaDocumentosElectronicosComponent } from './compras/consulta-documentos-electronicos/consulta-documentos-electronicos.component';
 
 
 
@@ -59,6 +60,11 @@ const routes: Routes = [
       {
         path: 'bandejaRequisicion', //
         component: RequisicionPersonalListComponent
+      },
+
+      {
+        path: 'consultaValidez', //
+        component: ConsultaDocumentosElectronicosComponent
       },
 
     ]

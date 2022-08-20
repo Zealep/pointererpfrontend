@@ -20,6 +20,7 @@ import { RequisicionPersonalComponent } from './mantenimiento/requisicion-person
 import { RequisicionPersonalListComponent } from './mantenimiento/requisicion-personal/requisicion-personal-list/requisicion-personal-list.component';
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { ConsultaDocumentosElectronicosComponent } from './compras/consulta-documentos-electronicos/consulta-documentos-electronicos.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
       GaleriaEditComponent,
       NoticiaEditComponent,
       RequisicionPersonalComponent,
-      RequisicionPersonalListComponent
+      RequisicionPersonalListComponent,
+      ConsultaDocumentosElectronicosComponent
   ],
   imports: [
     SharedModule,

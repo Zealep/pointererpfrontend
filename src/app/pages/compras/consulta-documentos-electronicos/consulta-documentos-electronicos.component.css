@@ -1,5 +1,5 @@
 table {
-  width: 100%;
+
 }
 
 .mat-form-field {
@@ -15,7 +15,14 @@ table {
   width: 100%;
 }
 
-.mat-column-acciones {
-  width: 32px;
-  text-align: center;
+.table-content{
+  width: 100%;
+  max-width: 100%;
+  overflow: auto;
 }
+
+.mat-column-razonSocialProveedor{
+  width: 300px;
+}
+
+

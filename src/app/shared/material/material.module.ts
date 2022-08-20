@@ -27,6 +27,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatMomentDateModule,MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from "@angular/material-moment-adapter";
 import {MatChipsModule} from '@angular/material/chips';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import {MatChipsModule} from '@angular/material/chips';
     MatRadioModule,
     MatProgressSpinnerModule,
     MatMomentDateModule,
-    MatChipsModule
+    MatChipsModule,
+    MatTabsModule
   ],
   exports: [
     MatInputModule,
@@ -84,7 +86,8 @@ import {MatChipsModule} from '@angular/material/chips';
     MatRadioModule,
     MatProgressSpinnerModule,
     MatMomentDateModule,
-    MatChipsModule
+    MatChipsModule,
+    MatTabsModule
 
   ],
  providers: [
