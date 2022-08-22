@@ -32,6 +32,13 @@ export class ConsultaValidezService {
     );
   }
 
+  listSunat(c:ConsultaValidezIn) {
+    return this.http.post<ConsultaDocumentosElectronicosDTO[]>(`${this.baseUrl}/bandejaConsultaValidezSunat`,c)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
 
 
 

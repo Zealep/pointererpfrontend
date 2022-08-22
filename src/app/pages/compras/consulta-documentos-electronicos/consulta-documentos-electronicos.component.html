@@ -2,7 +2,7 @@
   <div>
   <mat-toolbar color="primary">
 
-    <span>Consulta Validez Documentos Electrónicosal</span>
+    <span>Consulta Validez Documentos Electrónicos</span>
     </mat-toolbar>
 
     <form [formGroup]="form">
@@ -91,28 +91,22 @@
   </div>
   <div >
       <div class="row">
-          <div class="col-12 col-md-3">
+          <div class="col-12 col-md-4">
             <button color="primary" class="btn-form" mat-raised-button matTooltip="Buscar" matTooltipPosition="above" (click)="this.actualizar()">
               <mat-icon>search</mat-icon> Actualizar
             </button>
 
           </div>
 
-          <div class="col-12 col-md-3">
+          <div class="col-12 col-md-4">
             <button color="primary" class="btn-form" mat-raised-button matTooltip="Buscar" matTooltipPosition="above" (click)="this.consultaSunat()">
               <mat-icon>search</mat-icon> Consultas Sunat
             </button>
 
           </div>
 
-          <div class="col-12 col-md-3">
-            <button color="primary" class="btn-form" mat-raised-button matTooltip="Buscar" matTooltipPosition="above" (click)="this.guardarEstado()">
-              <mat-icon>save</mat-icon> Guardar Estado
-            </button>
 
-          </div>
-
-          <div class="col-12 col-md-3">
+          <div class="col-12 col-md-4">
             <button color="primary" class="btn-form"  mat-raised-button matTooltip="Buscar" matTooltipPosition="above" (click)="this.limpiar()">
               <mat-icon>cleaning_services</mat-icon> Limpiar
             </button>
@@ -164,12 +158,12 @@
 
     <ng-container matColumnDef="fechaEmision">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Emisión</th>
-      <td mat-cell *matCellDef="let row"> {{row.fechaEmision | date: 'dd/MM/yyyy'}} </td>
+      <td mat-cell *matCellDef="let row"> {{row.fechaEmision }} </td>
     </ng-container>
 
     <ng-container matColumnDef="fechaContable">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Contable</th>
-      <td mat-cell *matCellDef="let row"> {{row.fechaContable | date: 'dd/MM/yyyy'}} </td>
+      <td mat-cell *matCellDef="let row"> {{row.fechaContable}} </td>
     </ng-container>
 
     <ng-container matColumnDef="moneda">
@@ -201,9 +195,12 @@
     <ng-container matColumnDef="estado">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
       <td mat-cell *matCellDef="let row">
+        <td mat-cell *matCellDef="let row"> {{row.estado}}
+        <!--
         <mat-chip-list aria-label="Fish selection">
           <mat-chip [ngStyle]="{'background-color':row.estRequisicion=='A'?'green':'red'}">{{getEstado(row.estado)}} </mat-chip>
         </mat-chip-list>
+        -->
       </td>
     </ng-container>
 
@@ -224,12 +221,12 @@
       <td mat-cell *matCellDef="let row"> {{row.idSunatEstadoDomicilioProveedor}} </td>
     </ng-container>
 
-    <!--
+
     <ng-container matColumnDef="observaciones">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Observaciones</th>
-      <td mat-cell *matCellDef="let row"> {{row.observaciones}} </td>
+      <td mat-cell *matCellDef="let row"> {{row.glsSunatObservacionesDocumento}} </td>
     </ng-container>
--->
+
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

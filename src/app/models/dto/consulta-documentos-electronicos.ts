@@ -6,8 +6,8 @@ export class ConsultaDocumentosElectronicosDTO{
   numero!:string;
   nroDocumentoProveedor!:string;
   razonSocialProveedor!:string
-  fechaEmision!:string
-  fechaContable!:string
+  fechaEmision!:Date
+  fechaContable!:Date
   moneda!:string
   base!:number
   exonerado!:number
@@ -22,5 +22,9 @@ export class ConsultaDocumentosElectronicosDTO{
    glsRuc!:string;
    idRegistroCompra!:string;
    totalPrecioCompra!:number;
+   glsSunatEstadoDocumento!:string
+   glsSunatEstadoProveedor!:string
+   glsSunatEstadoDomicilioProveedor!:string
+   glsSunatObservacionesDocumento!:string
 }
 

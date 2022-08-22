@@ -12,6 +12,7 @@ import { MatSort } from '@angular/material/sort';
 import { ConsultaValidezIn } from '../../../models/dto/consulta-validez-in';
 import * as moment from 'moment';
 import { SunatService } from '../../../services/sunat.service';
+import { SpinnerOverlayService } from '../../../services/overlay.service';
 
 @Component({
   selector: 'app-consulta-documentos-electronicos',
@@ -21,7 +22,7 @@ import { SunatService } from '../../../services/sunat.service';
 export class ConsultaDocumentosElectronicosComponent implements OnInit {
 
   estado!:string
-  displayedColumns: string[] = ['item', 'nroAuxiliar', 'tipoDocumento', 'serie','numero','nroDocumentoProveedor','razonSocialProveedor','fechaEmision','fechaContable','moneda','base','exonerado','igv','total','estado','estadoCp','estadoRuc','condDomiRuc'];
+  displayedColumns: string[] = ['item', 'nroAuxiliar', 'tipoDocumento', 'serie','numero','nroDocumentoProveedor','razonSocialProveedor','fechaEmision','fechaContable','moneda','base','exonerado','igv','total','estado','estadoCp','estadoRuc','condDomiRuc','observaciones'];
   dataSource!: MatTableDataSource<ConsultaDocumentosElectronicosDTO>;
   bandejaConsultaValidez:ConsultaDocumentosElectronicosDTO[] = []
 
@@ -47,7 +48,8 @@ export class ConsultaDocumentosElectronicosComponent implements OnInit {
 
   constructor(private selectService:SelectService,
     private consultaValidezService:ConsultaValidezService,
-    private sunatService:SunatService) { }
+    private sunatService:SunatService,
+    private spinner:SpinnerOverlayService) { }
 
   ngOnInit(): void {
     this.getDocumentos()
@@ -57,7 +59,7 @@ export class ConsultaDocumentosElectronicosComponent implements OnInit {
   }
 
   getBandeja(){
-
+    this.spinner.show()
     if(this.form.get('fechaDesde')?.value == null || this.form.get('fechaHasta')?.value == null){
       alert('Tiene que seleccionar las fechas')
       return;
@@ -94,8 +96,52 @@ export class ConsultaDocumentosElectronicosComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.bandejaConsultaValidez);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      this.spinner.hide()
     })
 
+  }
+
+  listSunat(){
+
+    this.spinner.show()
+
+    if(this.form.get('fechaDesde')?.value == null || this.form.get('fechaHasta')?.value == null){
+      alert('Tiene que seleccionar las fechas')
+      return;
+    }
+
+
+    if(this.form.get('fechaDesde')?.value != null || this.form.get('fechaHasta')?.value != null){
+      if(this.form.get('fechaDesde')?.value == null || this.form.get('fechaHasta')?.value == null ){
+        alert('Tiene que completar las dos fechas desde y hasta')
+        return;
+      }
+
+      if(this.form.get('fechaDesde')?.value > this.form.get('fechaHasta')?.value){
+          alert('La fecha desde no puede ser mayor a la fecha hasta')
+          return
+      }
+    }
+
+    let bandeja = new ConsultaValidezIn();
+
+    let desde:Date = this.form.get('fechaDesde')?.value;
+    let hasta:Date = this.form.get('fechaHasta')?.value;
+    bandeja.fechaDesde = moment(desde).format('YYYY-MM-DD')
+    bandeja.fechaHasta =  moment(hasta).format('YYYY-MM-DD')
+    bandeja.ordenCompra = this.form.get('ordenCompra')?.value;
+    bandeja.proveedor = this.form.get('proveedor')?.value;
+    bandeja.moneda = this.form.get('moneda')?.value;
+    bandeja.documento = this.form.get('tipoDocumento')?.value;
+
+    this.consultaValidezService.listSunat(bandeja)
+    .subscribe(x=>{
+      this.bandejaConsultaValidez = x;
+      this.dataSource = new MatTableDataSource(this.bandejaConsultaValidez);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      this.spinner.hide()
+    })
   }
 
   getProveedores(){
@@ -124,24 +170,13 @@ export class ConsultaDocumentosElectronicosComponent implements OnInit {
   }
 
   consultaSunat(){
-    /*
-    const skip = this.paginator.pageSize * this.paginator.pageIndex;
 
-    const pagedData = this.bandejaConsultaValidez.filter((u, i) => i >= skip)
-   .filter((u, i) => i <this.paginator.pageSize);
-
-    pagedData.map(x=>{
-
-    })
-    */
+    this.listSunat();
   }
 
-  guardarEstado(){
-
-  }
 
   limpiar(){
-
+    this.form.reset()
   }
 
 
