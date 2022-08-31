@@ -66,7 +66,7 @@
 
                 <mat-form-field appearance="outline">
                   <mat-label>Número de vacantes</mat-label>
-                  <input type="number" matInput formControlName="numeroVacantes">
+                  <input type="number" matInput formControlName="numeroVacantes" required>
                 </mat-form-field>
 
               </div>
@@ -178,9 +178,11 @@
 
                 <mat-form-field appearance="outline">
                   <mat-label>Fecha de solicitud</mat-label>
-                  <input matInput [matDatepicker]="picker1" formControlName="fechaSolicitud">
+                  <input matInput [matDatepicker]="picker1" formControlName="fechaSolicitud" [disabled]="true" required>
+                  <mat-hint>DD/MM/YYYY</mat-hint>
                   <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                   <mat-datepicker #picker1></mat-datepicker>
+
                 </mat-form-field>
 
               </div>
@@ -213,7 +215,8 @@
 
                 <mat-form-field appearance="outline">
                   <mat-label>Fecha de aprobación</mat-label>
-                  <input matInput [matDatepicker]="picker3" formControlName="fechaAprobacion">
+                  <input matInput [matDatepicker]="picker3" formControlName="fechaAprobacion" required>
+                  <mat-hint>DD/MM/YYYY</mat-hint>
                   <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
                   <mat-datepicker #picker3></mat-datepicker>
                 </mat-form-field>
@@ -247,7 +250,7 @@
 
                 <label id="example-radio-group-label3">Desea publicar la Requisición
                 </label><br>
-                <mat-radio-group aria-labelledby="example-radio-group-label3" formControlName="indPublicarRequisicion">
+                <mat-radio-group aria-labelledby="example-radio-group-label3" formControlName="indPublicarRequisicion" required>
                   <mat-radio-button value="S">Sí</mat-radio-button>
                   <mat-radio-button value="N">No</mat-radio-button>
 
@@ -259,7 +262,8 @@
 
                 <mat-form-field appearance="outline">
                   <mat-label>Fecha de inicio de la publicación</mat-label>
-                  <input matInput [ngxMatDatetimePicker]="pickertime" formControlName="fechaDesdePublicacion" >
+                  <input matInput [ngxMatDatetimePicker]="pickertime" formControlName="fechaDesdePublicacion" required>
+                  <mat-hint>DD/MM/YYYY</mat-hint>
                   <mat-datepicker-toggle matSuffix [for]="$any(pickertime)">
                   </mat-datepicker-toggle>
                   <ngx-mat-datetime-picker #pickertime [showSpinners]="showSpinners" [color]="color"
@@ -274,7 +278,8 @@
 
                 <mat-form-field appearance="outline">
                   <mat-label>Fecha fin de la publicación</mat-label>
-                  <input matInput [ngxMatDatetimePicker]="pickertime2" formControlName="fechaHastaPublicacion" >
+                  <input matInput [ngxMatDatetimePicker]="pickertime2" formControlName="fechaHastaPublicacion" required>
+                  <mat-hint>DD/MM/YYYY</mat-hint>
                   <mat-datepicker-toggle matSuffix [for]="$any(pickertime2)">
                   </mat-datepicker-toggle>
                   <ngx-mat-datetime-picker #pickertime2 [showSpinners]="showSpinners" [color]="color"
@@ -309,7 +314,7 @@
               <div class="col-12 col-md-12">
 
                 <label id="example-radio-group-label">Vizualizar sueldo</label><br>
-                <mat-radio-group aria-labelledby="example-radio-group-label" formControlName="indVisualizarSueldo">
+                <mat-radio-group aria-labelledby="example-radio-group-label" formControlName="indVisualizarSueldo" required>
                   <mat-radio-button value="S">Si</mat-radio-button>
                   <mat-radio-button value="N">No</mat-radio-button>
                 </mat-radio-group>
@@ -323,7 +328,7 @@
 
                 <mat-form-field appearance="outline">
                   <mat-label>Sueldo propuesto</mat-label>
-                  <input type="number" matInput formControlName="sueldoPropuesto">
+                  <input type="number" matInput formControlName="sueldoPropuesto" required>
                 </mat-form-field>
 
 
@@ -332,7 +337,8 @@
               <div class="col-12 col-md-12">
                 <mat-form-field appearance="outline">
                   <mat-label>Fecha de posible ingreso</mat-label>
-                  <input matInput [matDatepicker]="picker2" formControlName="fechaPosibleIngreso">
+                  <input matInput [matDatepicker]="picker2" formControlName="fechaPosibleIngreso" required>
+                  <mat-hint>DD/MM/YYYY</mat-hint>
                   <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                   <mat-datepicker #picker2></mat-datepicker>
                 </mat-form-field>
@@ -402,7 +408,6 @@
         <mat-tab label="Pruebas a aplicar">
 
           <div class="container">
-            <mat-toolbar color="primary"><span>Pruebas a aplicar</span></mat-toolbar>
 
             <div class="row" style="margin-top: 15px;">
 

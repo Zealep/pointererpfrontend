@@ -86,8 +86,6 @@
 
     </div>
 
-
-
   </div>
   <div >
       <div class="row">
@@ -119,21 +117,15 @@
 <div style="margin-top:15px" class="table-content">
   <table mat-table [dataSource]="dataSource" matSort>
 
-    <ng-container matColumnDef="item">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Item </th>
-      <td mat-cell *matCellDef="let row">
-        {{row.item}} </td>
+    <ng-container matColumnDef="proveedor">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Proveedor</th>
+      <td mat-cell *matCellDef="let row"> {{row.razonSocialProveedor}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="nroAuxiliar">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> N° Auxiliar
+    <ng-container matColumnDef="tipo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo
       </th>
-      <td mat-cell *matCellDef="let row">  {{row.nroAuxiliar}}  </td>
-    </ng-container>
-
-    <ng-container matColumnDef="tipoDocumento">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo de Documento</th>
-      <td mat-cell *matCellDef="let row"> {{row.tipoDocumento}} </td>
+      <td mat-cell *matCellDef="let row">  {{row.abreDocumento}}  </td>
     </ng-container>
 
     <ng-container matColumnDef="serie">
@@ -146,79 +138,38 @@
       <td mat-cell *matCellDef="let row"> {{row.numero}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="nroDocumentoProveedor">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> N° Documento Proveedor</th>
-      <td mat-cell *matCellDef="let row"> {{row.nroDocumentoProveedor}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="razonSocialProveedor">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Razón Social Proveedor</th>
-      <td mat-cell *matCellDef="let row"> {{row.razonSocialProveedor}} </td>
-    </ng-container>
 
     <ng-container matColumnDef="fechaEmision">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Emisión</th>
       <td mat-cell *matCellDef="let row"> {{row.fechaEmision }} </td>
     </ng-container>
 
-    <ng-container matColumnDef="fechaContable">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Contable</th>
-      <td mat-cell *matCellDef="let row"> {{row.fechaContable}} </td>
-    </ng-container>
 
     <ng-container matColumnDef="moneda">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Moneda</th>
       <td mat-cell *matCellDef="let row"> {{row.moneda}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="base">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Base</th>
-      <td mat-cell *matCellDef="let row"> {{row.base}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="exonerado">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Exonerado</th>
-      <td mat-cell *matCellDef="let row"> {{row.exonerado}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="igv">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> IGV</th>
-      <td mat-cell *matCellDef="let row"> {{row.igv}} </td>
-    </ng-container>
-
     <ng-container matColumnDef="total">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Total</th>
-      <td mat-cell *matCellDef="let row"> {{row.total}} </td>
-    </ng-container>
-
-
-    <ng-container matColumnDef="estado">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
-      <td mat-cell *matCellDef="let row">
-        <td mat-cell *matCellDef="let row"> {{row.estado}}
-        <!--
-        <mat-chip-list aria-label="Fish selection">
-          <mat-chip [ngStyle]="{'background-color':row.estRequisicion=='A'?'green':'red'}">{{getEstado(row.estado)}} </mat-chip>
-        </mat-chip-list>
-        -->
-      </td>
+      <td mat-cell *matCellDef="let row"> {{row.totalPrecioCompra}} </td>
     </ng-container>
 
     <!-- SUNAT DATOS-->
 
     <ng-container matColumnDef="estadoCp">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Resultado Documento</th>
-      <td mat-cell *matCellDef="let row"> {{row.idSunatEstadoDocumento}} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="Estado Comprobante de Pago" matTooltipPosition="above"> Estado CP.</th>
+      <td mat-cell *matCellDef="let row"> {{row.glsSunatEstadoDocumento}} </td>
     </ng-container>
 
     <ng-container matColumnDef="estadoRuc">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Resultado Proveedor</th>
-      <td mat-cell *matCellDef="let row"> {{row.idSunatEstadoProveedor}} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="Estado del contribuyente" matTooltipPosition="above"> Estado RUC</th>
+      <td mat-cell *matCellDef="let row"> {{row.glsSunatEstadoProveedor}} </td>
     </ng-container>
 
     <ng-container matColumnDef="condDomiRuc">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Condición de Domicilio Proveedor</th>
-      <td mat-cell *matCellDef="let row"> {{row.idSunatEstadoDomicilioProveedor}} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="Condición Domiciliaria del Contribuyente" matTooltipPosition="above"> Cond. Domi. RUC</th>
+      <td mat-cell *matCellDef="let row"> {{row.glsSunatEstadoDomicilioProveedor}} </td>
     </ng-container>
 
 
@@ -227,13 +178,27 @@
       <td mat-cell *matCellDef="let row"> {{row.glsSunatObservacionesDocumento}} </td>
     </ng-container>
 
+      <!-- Header row first group -->
+  <ng-container matColumnDef="header-row-first-group">
+    <th mat-header-cell *matHeaderCellDef
+        [ngStyle]="{'text-align':'center'}"
+        [attr.colspan]="7">
+      Comprobante
+    </th>
+  </ng-container>
 
+  <!-- Header row second group -->
+  <ng-container matColumnDef="header-row-second-group">
+    <th mat-header-cell *matHeaderCellDef [attr.colspan]="4"> Resultado Sunat </th>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="['header-row-first-group', 'header-row-second-group']"></tr>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
     <!-- Row shown when there is no matching data. -->
     <tr class="mat-row" *matNoDataRow>
-      <td class="mat-cell" colspan="4">No hay informacion de la busqueda</td>
+      <td class="mat-cell" colspan="11">No hay informacion de la busqueda</td>
     </tr>
   </table>
 

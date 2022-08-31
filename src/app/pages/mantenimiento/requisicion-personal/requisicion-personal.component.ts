@@ -24,6 +24,8 @@ import { PruebaRequisicion } from '../../../models/prueba-requisicion';
 import { MatTableDataSource } from '@angular/material/table';
 import { PruebaRequisicionPersonalService } from '../../../services/prueba-requisicion-personal.service';
 import { SpinnerOverlayService } from '../../../services/overlay.service';
+import { catchError } from 'rxjs/operators';
+import { EMPTY } from 'rxjs';
 
 @Component({
   selector: 'app-requisicion-personal',
@@ -75,7 +77,7 @@ export class RequisicionPersonalComponent implements OnInit {
     fechaDesdePublicacion: new FormControl(''),
     fechaHastaPublicacion: new FormControl(''),
     observaciones: new FormControl(''),
-    estRequisicion: new FormControl(''),
+    estRequisicion: new FormControl({value:'A',disabled:true}),
   });
 
   idRequisicionPersonal!:string | null
@@ -291,6 +293,7 @@ getTiposPrueba(){
     this.form.controls['fechaSolicitud'].disable()
     this.form.controls['idTrabajadorSolicitante'].disable()
     this.form.controls['idTrabajadorAprobador'].disable()
+    this.form.controls['estRequisicion'].enable()
   }
 
   cargarTiposPruebas(){
@@ -326,8 +329,6 @@ getTiposPrueba(){
 
   grabar() {
 
-    this.spinnerOverlayService.show();
-
     let total = 0;
     console.log(this.dataSource)
 
@@ -336,14 +337,18 @@ getTiposPrueba(){
       }
 
     if(total != 100){
+
       this.snackBar.open('El total del peso de las pruebas tiene q tener el 100%', "X", {
         horizontalPosition: 'center',
         verticalPosition: 'top',
         duration: 3000,
         panelClass:["error-style"]
       })
+
       return;
     }
+
+    this.spinnerOverlayService.show();
 
 
     const requisicion = new RequisicionPersonal();
@@ -416,6 +421,16 @@ getTiposPrueba(){
 
 
     this.requisicionService.save(requisicion)
+    .pipe(catchError(error => {
+      console.log('error',error)
+      this.snackBar.open(error, "X", {
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+        duration: 4000,
+        panelClass:["error-style"]
+      })
+      this.spinnerOverlayService.hide();
+      return EMPTY}))
     .subscribe(x=>{
       this.guardarPruebas(x.idEntity!)
       this.snackBar.open('Se proceso el registro de requisicion de personal correctamente', "X", {

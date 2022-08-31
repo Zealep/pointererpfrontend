@@ -1,5 +1,5 @@
 table {
-
+  width: 100%;
 }
 
 .mat-form-field {
@@ -15,14 +15,64 @@ table {
   width: 100%;
 }
 
+/*
 .table-content{
   width: 100%;
   max-width: 100%;
   overflow: auto;
 }
+*/
+.mat-column-proveedor{
+  width: 250px;
+}
 
-.mat-column-razonSocialProveedor{
-  width: 300px;
+.mat-column-tipo{
+  width: 100px;
+}
+
+.mat-column-serie{
+  width: 100px;
+}
+
+.mat-column-numero{
+  width: 120px;
+}
+
+.mat-column-fechaEmision{
+  width: 100px;
+}
+
+.mat-column-moneda{
+  width: 100px;
+}
+
+.mat-column-total{
+  width: 100px;
+}
+
+.mat-column-estadoCp{
+  width: 100px;
+}
+
+.mat-column-estadoRuc{
+  width: 100px;
 }
 
 
+.mat-column-condDomiRuc{
+  width: 100px;
+}
+
+.mat-column-observaciones{
+  width: 100px;
+}
+
+.table-content {
+  overflow-x: scroll;
+}
+
+th.mat-header-cell, td.mat-cell {
+  text-align: center;
+  border: 0.5px solid #CCC;
+  padding: 0 !important;
+}

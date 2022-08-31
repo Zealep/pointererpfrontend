@@ -22,7 +22,7 @@ import { SpinnerOverlayService } from '../../../services/overlay.service';
 export class ConsultaDocumentosElectronicosComponent implements OnInit {
 
   estado!:string
-  displayedColumns: string[] = ['item', 'nroAuxiliar', 'tipoDocumento', 'serie','numero','nroDocumentoProveedor','razonSocialProveedor','fechaEmision','fechaContable','moneda','base','exonerado','igv','total','estado','estadoCp','estadoRuc','condDomiRuc','observaciones'];
+  displayedColumns: string[] = ['proveedor', 'tipo', 'serie','numero','fechaEmision','moneda','total','estadoCp','estadoRuc','condDomiRuc','observaciones'];
   dataSource!: MatTableDataSource<ConsultaDocumentosElectronicosDTO>;
   bandejaConsultaValidez:ConsultaDocumentosElectronicosDTO[] = []
 

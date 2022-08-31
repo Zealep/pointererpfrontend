@@ -15,7 +15,7 @@ import { AlertaOut } from '../models/dto/alerta-out';
 export class PagesComponent implements OnInit {
 
   appitems: any;
-  idModulo?: string
+  idModulo?: string | null
   nombreModulo?:string
 
   alertas: AlertaOut[] = []
@@ -34,7 +34,13 @@ export class PagesComponent implements OnInit {
     private selectService:SelectService) { }
 
   ngOnInit(): void {
+    console.log('init pages')
     this.getAlertas();
+    if(sessionStorage.getItem('idModulo')!=null){
+      this.menuService.getListByModulo(sessionStorage.getItem('idModulo')!).subscribe(x=>{
+        this.appitems = x;
+      })
+    }
   }
 
   getAlertas(){
@@ -45,6 +51,7 @@ export class PagesComponent implements OnInit {
   }
 
   getMenus(){
+    console.log('idModulo',this.idModulo)
     this.menuService.getListByModulo(this.idModulo!).subscribe(x=>{
       this.appitems = x;
     })
@@ -57,6 +64,7 @@ export class PagesComponent implements OnInit {
 
   onHeader(data:any){
       this.idModulo =data.id;
+      sessionStorage.setItem('idModulo',this.idModulo!)
       this.nombreModulo = data.nombre;
       this.getMenus();
       console.log('items',this.appitems)

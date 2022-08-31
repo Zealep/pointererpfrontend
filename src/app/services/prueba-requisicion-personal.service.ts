@@ -68,7 +68,7 @@ export class PruebaRequisicionPersonalService {
       console.log('Error:', error.error);
     }
     //catch and rethrow
-    return throwError('Usuario o clave invalidas');
+    return throwError('Ocurrio un error en la peticion');
 
   }
 }

@@ -26,5 +26,6 @@ export class ConsultaDocumentosElectronicosDTO{
    glsSunatEstadoProveedor!:string
    glsSunatEstadoDomicilioProveedor!:string
    glsSunatObservacionesDocumento!:string
+   abreDocumento!:string
 }
 
