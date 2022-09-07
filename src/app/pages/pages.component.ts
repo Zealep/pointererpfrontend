@@ -34,8 +34,8 @@ export class PagesComponent implements OnInit {
     private selectService:SelectService) { }
 
   ngOnInit(): void {
-    console.log('init pages')
     this.getAlertas();
+    console.log('sessionmodulo',sessionStorage.getItem('idModulo'))
     if(sessionStorage.getItem('idModulo')!=null){
       this.menuService.getListByModulo(sessionStorage.getItem('idModulo')!).subscribe(x=>{
         this.appitems = x;

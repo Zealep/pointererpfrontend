@@ -13,6 +13,9 @@ import { ConsultaValidezIn } from '../../../models/dto/consulta-validez-in';
 import * as moment from 'moment';
 import { SunatService } from '../../../services/sunat.service';
 import { SpinnerOverlayService } from '../../../services/overlay.service';
+import { catchError } from 'rxjs/operators';
+import { EMPTY } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-consulta-documentos-electronicos',
@@ -49,7 +52,8 @@ export class ConsultaDocumentosElectronicosComponent implements OnInit {
   constructor(private selectService:SelectService,
     private consultaValidezService:ConsultaValidezService,
     private sunatService:SunatService,
-    private spinner:SpinnerOverlayService) { }
+    private spinner:SpinnerOverlayService,
+    private snackBar:MatSnackBar) { }
 
   ngOnInit(): void {
     this.getDocumentos()
@@ -91,6 +95,16 @@ export class ConsultaDocumentosElectronicosComponent implements OnInit {
 
 
     this.consultaValidezService.list(bandeja)
+    .pipe(catchError(error => {
+      console.log('error',error)
+      this.snackBar.open(error, "X", {
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+        duration: 4000,
+        panelClass:["error-style"]
+      })
+      this.spinner.hide();
+      return EMPTY}))
     .subscribe(x=>{
       this.bandejaConsultaValidez = x;
       this.dataSource = new MatTableDataSource(this.bandejaConsultaValidez);
@@ -135,6 +149,16 @@ export class ConsultaDocumentosElectronicosComponent implements OnInit {
     bandeja.documento = this.form.get('tipoDocumento')?.value;
 
     this.consultaValidezService.listSunat(bandeja)
+    .pipe(catchError(error => {
+      console.log('error',error)
+      this.snackBar.open(error, "X", {
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+        duration: 4000,
+        panelClass:["error-style"]
+      })
+      this.spinner.hide();
+      return EMPTY}))
     .subscribe(x=>{
       this.bandejaConsultaValidez = x;
       this.dataSource = new MatTableDataSource(this.bandejaConsultaValidez);
