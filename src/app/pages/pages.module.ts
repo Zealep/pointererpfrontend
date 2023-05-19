@@ -21,21 +21,24 @@ import { RequisicionPersonalListComponent } from './mantenimiento/requisicion-pe
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ConsultaDocumentosElectronicosComponent } from './compras/consulta-documentos-electronicos/consulta-documentos-electronicos.component';
+import { ReqMaterialesComponent } from './req-materiales/req-materiales.component';
 
 
 @NgModule({
   declarations: [
 
     InicioComponent,
-      GaleriaFotosComponent,
-      NoticiaComponent,
-      NoticiaListComponent,
-      GaleriaListComponent,
-      GaleriaEditComponent,
-      NoticiaEditComponent,
-      RequisicionPersonalComponent,
-      RequisicionPersonalListComponent,
-      ConsultaDocumentosElectronicosComponent
+    GaleriaFotosComponent,
+    NoticiaComponent,
+    NoticiaListComponent,
+    GaleriaListComponent,
+    GaleriaEditComponent,
+    NoticiaEditComponent,
+    RequisicionPersonalComponent,
+    RequisicionPersonalListComponent,
+    ConsultaDocumentosElectronicosComponent,
+    ReqMaterialesComponent
+
   ],
   imports: [
     SharedModule,
